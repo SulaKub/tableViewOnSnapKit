@@ -24,6 +24,8 @@ class DetailViewController: UIViewController {
     var imageView1: UIImageView = {
         let iv = UIImageView ()
         iv.image = UIImage(named: "")
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
         return iv
     } ()
     
@@ -72,9 +74,9 @@ class DetailViewController: UIViewController {
         }
         
         imageView1.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(30)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 350, height: 350))
+            make.top.equalTo(contentView.snp.top) // Измените на contentView, чтобы изображение находилось внутри contentView
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints{ make in
